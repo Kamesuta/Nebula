@@ -59,7 +59,7 @@ export abstract class BaseMavenRepo extends BaseFileStructure {
 
     public async downloadArtifactDirect(url: string, path: string): Promise<void> {
         BaseMavenRepo.logger.debug(`Downloading ${url}..`)
-        const request = await got.stream.get({ url })
+        const request = got.stream.get({ url })
         const localPath = resolve(this.containerDirectory, path)
         await mkdirs(dirname(localPath))
         const writer = createWriteStream(localPath)
